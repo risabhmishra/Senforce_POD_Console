@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# This is a SANE wrapper script for running the vehicles-detection-client, intended for use
+# from supervisor.
+
+# Kill any lurking vehicles-detection-clients. There can be only one!
+for vehicles-detection-client_pid in $( ps ax | grep sn-vehicles-detection-client.jar | grep -v grep | awk '{print $1;}' ); do
+    kill "$vehicles-detection-client_pid"
+done
+
+# Wait a couple of seconds for the smoke to clear.
+sleep 2
+
+# Change into directory of this script.
+cd /opt/sensen/share/vehicles-detection-client
+
+# Replace this process with the Java event-handler via exec.
+exec /usr/bin/java -Dlog4j.configuration='file:log4j.properties' -jar sn-vehicles-detection-client.jar
