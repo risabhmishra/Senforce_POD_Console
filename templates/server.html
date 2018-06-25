@@ -1,0 +1,81 @@
+
+<!-- ######## Risabh Mishra ########## -->
+
+
+{% extends 'base.html' %}
+{% block title %}Server{% endblock title %}
+{% block server_active %}active{% endblock server_active %}
+{% block body %}
+
+    <h2><strong>CPU Percentage Used: {{ percent }}%</strong></h2>
+
+    <h3><strong>CPU Times</strong></h3>
+{% for x in cputime %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Statistics</strong></h3>
+{% for x in cpustats %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Memory</strong></h3>
+{% for x in memory %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Disk Usage</strong></h3>
+{% for x in diskusage %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Times</strong></h3>
+{% for x in cputime %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Users</strong></h3>
+{% for x in user %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <h3><strong>CPU Running Processes</strong></h3>
+{% for x in runprocess %}
+    <p>{{ x }}</p>
+{% endfor %}
+
+    <script>
+      $(document).ready(function () {
+          var data = {
+              labels: ['Bananas', 'Apples', 'Grapes'],
+              series: [20, 15, 40]
+          };
+
+          var options = {
+              labelInterpolationFnc: function (value) {
+                  return value[0]
+              }
+          };
+
+          var responsiveOptions = [
+              ['screen and (min-width: 640px)', {
+                  chartPadding: 30,
+                  labelOffset: 100,
+                  labelDirection: 'explode',
+                  labelInterpolationFnc: function (value) {
+                      return value;
+                  }
+              }],
+              ['screen and (min-width: 1024px)', {
+                  labelOffset: 80,
+                  chartPadding: 20
+              }]
+          ];
+
+          new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+      });
+
+    </script>
+
+
+{% endblock body %}

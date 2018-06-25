@@ -1,0 +1,22 @@
+
+<!-- ######## Risabh Mishra ########## -->
+
+{% extends 'base.html' %}
+{% block title %}Camera{% endblock title %}
+{% block camera_active %}active{% endblock camera_active %}
+{% block body %}
+
+<div align="center" style="margin-top: 100px">
+    <a href="{% url 'senforce_app:buttonlink' 1 %}"><button type="button" class="btn btn-info">Camera-1</button></a>&nbsp;&nbsp;
+    <a href="{% url 'senforce_app:buttonlink' 2 %}" ><button type="button" class="btn btn-info">Camera-2</button></a>&nbsp;&nbsp;
+    <a href="{% url 'senforce_app:buttonlink' 3 %}" ><button type="button" class="btn btn-info">Camera-3</button></a>
+
+
+<br><br>
+
+    <a href="{% url 'senforce_app:buttonlink' 4 %}" ><button type="button" class="btn btn-info">Camera-4</button></a>&nbsp;&nbsp;
+    <a href="{% url 'senforce_app:buttonlink' 5 %}" ><button type="button" class="btn btn-info">Camera-5</button></a>&nbsp;&nbsp;
+    <a href="{% url 'senforce_app:buttonlink' 6 %}" ><button type="button" class="btn btn-info">Camera-6</button></a></div>
+
+
+{% endblock body %}

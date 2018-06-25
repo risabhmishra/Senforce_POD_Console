@@ -1,0 +1,39 @@
+
+<!-- ######## Risabh Mishra ########## -->
+
+
+{% extends 'base.html' %}
+{% block title %}Battery{% endblock title %}
+{% block battery_active %}active{% endblock battery_active %}
+{% block body %}
+    {% if plugged %}
+        <h2 id="h1">Power Plugged In</h2>
+    {% else %}
+        <h2 id="h2" >Power Not Plugged In</h2>
+    {% endif %}
+
+    <h1>Battery Percentage: {{ percent }} %</h1>
+
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+
+    <script>
+     var pusher = new Pusher('f71a3074a9310d38216a', {
+      cluster: 'ap2',
+      encrypted: true
+    });
+
+     var channel = pusher.subscribe('battery')
+
+    // And react to showMessage events
+     channel.bind(‘show_plugged’, function(data) {
+         if(data.plugged)
+         document.getElementById('h1').innerHTML="Plugged In";
+         else
+             document.getElementById('h2').innerHTML="Not plugged In";
+     });
+
+    </script>
+
+{% endblock body %}

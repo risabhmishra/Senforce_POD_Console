@@ -1,0 +1,242 @@
+
+<!-- ######## Risabh Mishra ########## -->
+
+{% extends 'base.html' %}
+{% block title %}SenSen Networks{% endblock title %}
+{% block home_active %}active{% endblock home_active %}
+
+{% block body %}
+    <div class="main">
+
+			<!-- MAIN CONTENT -->
+					<div class="main-content-head">
+						<h2>Hello Admin!</h2>
+						<p>Welcome to Sensen Dashboard</p>
+					</div>
+
+					<div class="profile-content">
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="profile-state">
+									<div class="icon-box">
+										<span class="icon-bg icon-bg-1">
+                                            {% load static %}
+											<img src="{% static '/images/user-icon.png' %}" alt="user-icon">
+										</span>
+										<h2>total visitors</h2>
+									</div><!--/.icon-box-->
+									<h3>32669</h3>
+									<p>324 new user</p>
+								</div><!--/.profile-state-->
+							</div><!--/.col-->
+							<div class="col-sm-3">
+								<div class="profile-state">
+									<div class="icon-box">
+										<span class="icon-bg icon-bg-2">
+                                            {% load static %}
+											<img src="{% static '/images/add-cart.png' %}" alt="add-cart">
+										</span>
+										<h2>total order placeed</h2>
+									</div><!--/.icon-box-->
+									<h3>15500</h3>
+									<p>10 new</p>
+								</div><!--/.profile-state-->
+							</div><!--/.col-->
+							<div class="col-sm-3">
+								<div class="profile-state">
+									<div class="icon-box">
+										<span class="icon-bg icon-bg-3">
+                                            {% load static %}
+											<img src="{% static '/images/money-icon.png' %}" alt="money-icon">
+										</span>
+										<h2>total profit</h2>
+									</div><!--/.icon-box-->
+									<h3>$43,900</h3>
+									<p>$340 This Week</p>
+								</div><!--/.profile-state-->
+							</div><!--/.col-->
+							<div class="col-sm-3">
+								<div class="profile-state">
+									<div class="icon-box">
+										<span class="icon-bg icon-bg-4">
+                                            {% load static %}
+											<img src="{% static '/images/plane-icon.png' %}" alt="deliver-icon">
+										</span>
+										<h2>delivery processing</h2>
+									</div><!--/.icon-box-->
+									<h3>2600</h3>
+									<p>120 This Week</p>
+								</div><!--/.profile-state-->
+							</div><!--/.col-->
+						</div><!--/.row-->
+
+					</div><!--/.profile-content-->
+
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<div class="box">
+								<div class="box-head">
+									<h2>statistics</h2>
+									<div class="statistics-data">
+										<div class="stat-income">
+											<p><span class="income-dot"></span>income</p>
+											<p><span class="income-dot outcome-dot"></span>outcome</p>
+										</div><!--/.stat-income-->
+									</div><!--/.statistics-data-->
+								</div><!--/.box-head-->
+								<div class="item">
+									<div id="statistics_data" class="ct-chart"></div>
+								</div><!--/.item-->
+							</div><!--/.box-->
+						</div><!--/.col-->
+						<div class="col-md-6 col-sm-6">
+							<div class="box">
+								<div class="box-head">
+									<h2>global sales by top locations</h2>
+								</div><!--/.box-head-->
+								<div class="item">
+									<div class="map" id="bubbles" style="position:relative;height: 170px;">
+
+									</div>
+									<div class="statistics-data">
+										<div class="map-area">
+											<ul>
+												<li>
+													<span class="map-dot ps-dot2"></span>Australia
+												</li>
+												<li>
+													<span class="map-dot ps-dot3"></span>Singapur
+												</li>
+												<li>
+													<span class="map-dot ps-dot4"></span>USA
+												</li>
+												<li>
+													<span class="map-dot ps-dot1"></span>India
+												</li>
+											</ul>
+										</div><!--/.map-area-->
+									</div><!--/.statistics-data-->
+								</div><!--/.item-->
+							</div><!--/.box-->
+						</div><!--/.col-->
+
+					</div><!--/.row-->
+
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="box">
+								<div class="box-head">
+									<h2>top 5 Customers</h2>
+								</div><!--/.box-head-->
+								<div class="item">
+									<div class="item-responsive ">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>ID#</th>
+													<th>Product Name</th>
+													<th>Dealer</th>
+													<th>Price</th>
+													<th>Quantity</th>
+													<th>Status</th>
+												</tr>
+											</thead><!--/thead-->
+											<tbody>
+												<tr>
+													<td><a href="#">1</a></td>
+													<td>Calgary</td>
+													<td>Sensen Networks</td>
+													<td>$25050</td>
+													<td>185</td>
+													<td>
+														<span class="item-status delivered">Delivered</span>
+													</td>
+												</tr>
+												<tr>
+													<td><a href="#">2</a></td>
+													<td>Subiaco</td>
+													<td>Sensen Networks</td>
+													<td>$25050</td>
+													<td>185</td>
+													<td><span class="item-status delivered">Delivered</span></td>
+												</tr>
+												<tr>
+													<td><a href="#">3</a></td>
+													<td>Brisbane</td>
+													<td>Sensen Networks</td>
+													<td>$25050</td>
+													<td>185</td>
+													<td><span class="item-status delivered">Delivered</span></td>
+												</tr>
+												<tr>
+													<td><a href="#">4</a></td>
+													<td>Maribyrnong</td>
+													<td>Sensen Networks</td>
+													<td>$25050</td>
+													<td>185</td>
+													<td><span class="item-status delivered">Delivered</span></td>
+												</tr>
+												<tr>
+													<td><a href="#">5</a></td>
+													<td>Logan</td>
+													<td>Sensen Networks</td>
+													<td>$25050</td>
+													<td>185</td>
+													<td><span class="item-status delivered">Delivered</span></td>
+												</tr>
+											</tbody><!--/tbody-->
+										</table><!--/.table-->
+									</div><!--/.table-responsive-->
+								</div><!--/.item-->
+							</div><!--/.box-->
+						</div><!--/.col-->
+						<div class="col-sm-4">
+							<div class="box">
+								<div class="box-head">
+									<h2>product status</h2>
+								</div><!--/.box-head-->
+								<div class="item">
+									<div id="product_status" class="ct-chart"></div>
+									<div class="statistics-data">
+										<div class="stat-income pl0">
+											<p><span class="income-dot ps-dot2"></span>margin</p>
+											<p class="ml10"><span class="income-dot ps-dot3"></span>profit</p>
+											<p class="ml10"><span class="income-dot ps-dot4"></span>lost</p>
+											<p><span class="income-dot ps-dot1"></span>others</p>
+										</div><!--/.stat-income-->
+									</div><!--/.statistics-data-->
+								</div><!--/.item-->
+							</div><!--/.box-->
+						</div><!--/.col-->
+
+					</div><!--/.row-->
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="box">
+								<div class="box-head">
+									<h2>yearly expense</h2>
+									<div class="year-info">
+										<div class="year-info-content">
+											<div class="year-color year-color-1"></div>
+											<h4>2015</h4>
+										</div><!--/.year-info-content-->
+										<div class="year-info-content">
+											<div class="year-color year-color-2"></div>
+											<h4>2016</h4>
+										</div><!--/.year-info-content-->
+										<div class="year-info-content">
+											<div class="year-color year-color-3"></div>
+											<h4>2017</h4>
+										</div><!--/.year-info-content-->
+									</div><!--/.yaer-info-->
+								</div><!--/.box-head-->
+								<div id="yarly_expence" class="ct-chart"></div>
+							</div><!--/.box-->
+
+						</div><!--/.col-->
+
+					</div><!--/.row-->
+
+		</div>
+{% endblock %}
