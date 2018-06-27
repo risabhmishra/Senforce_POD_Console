@@ -11,29 +11,23 @@
     {% else %}
         <h2 id="h2" >Power Not Plugged In</h2>
     {% endif %}
-
+  </br>
     <h1>Battery Percentage: {{ percent }} %</h1>
 
-
-    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-
+    <h1>Battery Seconds Left: {{ secs }}</h1>
 
     <script>
-     var pusher = new Pusher('f71a3074a9310d38216a', {
-      cluster: 'ap2',
-      encrypted: true
-    });
 
-     var channel = pusher.subscribe('battery')
-
-    // And react to showMessage events
-     channel.bind(‘show_plugged’, function(data) {
-         if(data.plugged)
-         document.getElementById('h1').innerHTML="Plugged In";
-         else
-             document.getElementById('h2').innerHTML="Not plugged In";
-     });
-
+$.ajax({
+    url: '127.0.0.1:8000/battery',
+    type: 'get',setInterval:1, // This is the default though, you don't actually need to always mention it
+    success: function(data) {
+        alert(data.toString());
+    },
+    failure: function(data) {
+        alert('Got an error dude');
+    }
+});
     </script>
 
 {% endblock body %}

@@ -2,11 +2,10 @@
 ######## Risabh Mishra ##########
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 import psutil
 from pusher import Pusher
 import urllib
-
 from .models import Camera,Gps
 from django.shortcuts import render
 from django.template import loader
@@ -57,31 +56,19 @@ def server(request):
 def buttonlink(request,button_num):
 
     cam = Camera.objects.get(cam_num=button_num)
-    url_fetch = "http://"+str(cam.cam_ip)+"/jpg/1/image.jpg"
-    html = '<img src='+url_fetch+' alt="Image Not Found" />'
-
-    #htmls  = "<script>"+' var url = "https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"; '+"window.open(purl,'Image','width=320px,height=240px,resizable=1');}</script>"
-
-    return HttpResponse(html)
+    #url_fetch = "http://"+str(cam.cam_ip)+"/jpg/1/image.jpg"
+    url_fetch_snap="http://"+str(cam.cam_ip)+"/axis-cgi/jpg/image.cgi?resolution=320x240"
+    url_fetch_video='http://'+str(cam.cam_ip)+'/axis-cgi/mjpg/video.cgi?resolution=320x240&fps=10'
+    #html = '<img src='+url_fetch+' alt="Image Not Found" />'
+    return HttpResponse(url_fetch_snap+'%'+url_fetch_video)
 
 def getbattery(request):
     battery = psutil.sensors_battery()
     plugged = battery.power_plugged
-    percent = str(battery.percent)
+    percent = battery.percent
+    secs = battery.secsleft
 
-    #Create Pusher Client
-    pusher = Pusher(app_id='547621',
-             key='f71a3074a9310d38216a',
-             secret='890b98c79f1fcfaa36cd',
-             cluster='ap2',
-            ssl=True)
-
-    #Send the message
-    pusher.trigger('battery','show_plugged',{
-        'plugged':plugged
-    })
-
-    return render(request,'battery.html',{'plugged':plugged,'percent':percent})
+    return render(request,'battery.html',{'plugged':plugged,'percent':percent,'secs':secs})
 
 def gps(request):
     gpsid = Gps.objects.get(pk=0)

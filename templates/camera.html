@@ -6,17 +6,71 @@
 {% block camera_active %}active{% endblock camera_active %}
 {% block body %}
 
-<div align="center" style="margin-top: 100px">
-    <a href="{% url 'senforce_app:buttonlink' 1 %}"><button type="button" class="btn btn-info">Camera-1</button></a>&nbsp;&nbsp;
-    <a href="{% url 'senforce_app:buttonlink' 2 %}" ><button type="button" class="btn btn-info">Camera-2</button></a>&nbsp;&nbsp;
-    <a href="{% url 'senforce_app:buttonlink' 3 %}" ><button type="button" class="btn btn-info">Camera-3</button></a>
+
+<script type="text/javascript">
+function func(x) {
+    var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+          data = this.responseText.split('%');
+      document.getElementById("snaps").src = data[0];
+      document.getElementById("ivideo").src = data[1];
+  }
+};
+xhttp.open("GET", "http://127.0.0.1:8000/buttonlink/"+x, true);
+xhttp.send();
+  }
+</script>
 
 
-<br><br>
+<table style="width:100%;height:100%;">
+<tr><td>
+<div align="left" style="position: relative;left: 0;top: 0">
+    {% load static %}
+    <img src="{% static '/images/SenFORCE.png'%}" alt="SenForce Car" width="300px" height="600px" usemap="#Map">
+<map name="Map">
+	<!--********************* Left Side  ****************************-->
+  <area shape="rect" coords="62,305,101,335" id="cam1" href="#" onclick="func(1)"/>
+  <area shape="rect" coords="62,360,99,381" href="#" onclick="func(2)" id="cam2"/>
+    <area shape="rect" coords="65,415,101,439" href="#" onclick="func(3)" id="cam3"/>
 
-    <a href="{% url 'senforce_app:buttonlink' 4 %}" ><button type="button" class="btn btn-info">Camera-4</button></a>&nbsp;&nbsp;
-    <a href="{% url 'senforce_app:buttonlink' 5 %}" ><button type="button" class="btn btn-info">Camera-5</button></a>&nbsp;&nbsp;
-    <a href="{% url 'senforce_app:buttonlink' 6 %}" ><button type="button" class="btn btn-info">Camera-6</button></a></div>
+	<!--****************************** Right side ********************-->
+    <area shape="rect" coords="198,308,242,332" href="#" onclick="func(4)" id="cam4">
+    <area shape="rect" coords="203,359,239,382" href="#" onclick="func(5)" id="cam5">
+    <area shape="rect" coords="204,409,239,440" href="#" onclick="func(6)" id="cam6">
+</map>
 
+</div>
+</td>
 
+<td>
+
+    <div class="container">
+        <div class="row">
+
+			   <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                <h3 class="panel-title" align="center">Snapshot</h3>
+                </div>
+
+                <div class="panel-body" align="center">
+			 <img id='snaps' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot" width="333px" height="240px"/> </div>
+            </div>
+          </div>
+
+             <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                <h3 class="panel-title" align="center">Live Feed</h3>
+                </div>
+
+                <div class="panel-body" align="center">
+					<iframe id="ivideo" width="100%" height="233" src="https://www.youtube.com/embed/Po_2NuFwaN4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+              </div>
+            </div>
+          </div>
+
+        </div></div></td></tr></table>
 {% endblock body %}
