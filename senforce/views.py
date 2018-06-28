@@ -56,8 +56,11 @@ def server(request):
 def buttonlink(request,button_num):
 
     cam = Camera.objects.get(cam_num=button_num)
+
+    ############# Use this URL For Axis Cameras ONLY ############s
+
     #url_fetch = "http://"+str(cam.cam_ip)+"/jpg/1/image.jpg"
-    url_fetch_snap="http://"+str(cam.cam_ip)+"/axis-cgi/jpg/image.cgi?resolution=320x240"
+    url_fetch_snap='http://'+str(cam.cam_ip)+"/axis-cgi/jpg/image.cgi?resolution=320x240"
     url_fetch_video='http://'+str(cam.cam_ip)+'/axis-cgi/mjpg/video.cgi?resolution=320x240&fps=10'
     #html = '<img src='+url_fetch+' alt="Image Not Found" />'
     return HttpResponse(url_fetch_snap+'%'+url_fetch_video)
