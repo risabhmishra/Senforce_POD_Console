@@ -4,11 +4,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 import psutil
-from pusher import Pusher
-import urllib
-from .models import Camera,Gps
+import urllib,os
+from .models import Camera,Gps,User
 from django.shortcuts import render
 from django.template import loader
+from SenForceWeb import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 def index(request):
@@ -17,6 +18,7 @@ def index(request):
 
 def camera(request):
     cam = Camera.objects.all()
+    ping()
     return render(request,'camera.html',{'camobjects':cam})
 
 def server(request):
@@ -59,10 +61,9 @@ def buttonlink(request,button_num):
 
     ############# Use this URL For Axis Cameras ONLY ############s
 
-    #url_fetch = "http://"+str(cam.cam_ip)+"/jpg/1/image.jpg"
-    url_fetch_snap='http://'+str(cam.cam_ip)+"/axis-cgi/jpg/image.cgi?resolution=320x240"
-    url_fetch_video='http://'+str(cam.cam_ip)+'/axis-cgi/mjpg/video.cgi?resolution=320x240&fps=10'
-    #html = '<img src='+url_fetch+' alt="Image Not Found" />'
+    url_fetch_snap='http://'+str(cam.cam_username)+':'+str(cam.cam_password)+'@'+str(cam.cam_ip)+"/axis-cgi/jpg/image.cgi"
+    url_fetch_video='http://'+str(cam.cam_username)+':'+str(cam.cam_password)+'@'+str(cam.cam_ip)+'/axis-cgi/mjpg/video.cgi?resolution=320x240&fps=10'
+
     return HttpResponse(url_fetch_snap+'%'+url_fetch_video)
 
 def getbattery(request):
@@ -85,3 +86,29 @@ def gps(request):
 
 def radar(request):
     return render(request,'radar.html')
+
+def ping():
+    import os
+    for i in Camera.objects.all():
+        hostname = str(i.cam_ip)  # example
+        response = os.system("ping -n 1 " + hostname)
+    #### IMPORTANT ######
+    ###### change -n to -c when using linux or mac server in response field######
+    # and then check the response...
+        if response == 0:
+            i.cam_active=True
+            i.save()
+        else:
+            i.cam_active=False
+            i.save()
+
+def mail():
+    subject = "SenForce Pod Debugging"
+    msg = "Congratulations for your success in Life."
+    ##to = User.user_email##
+    to = "pranav@sensennetworks.com"
+    res = send_mail(subject, msg, settings.EMAIL_HOST_USER, [to])
+    if (res == 1):
+        msg = "Mail Sent Successfuly"
+    else:
+        msg = "Mail could not sent"

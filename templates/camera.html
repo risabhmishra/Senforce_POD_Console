@@ -5,21 +5,20 @@
 {% block title %}Camera{% endblock title %}
 {% block camera_active %}active{% endblock camera_active %}
 {% block head %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/camera.css' %}">
 
     <script type="text/javascript">
     var a;
 
         function func(x) {
-    var xhttp = new XMLHttpRequest();
+            var xhttp = new XMLHttpRequest();
      xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
           data = this.responseText.split('%');
       document.getElementById("snaps").src = data[0];
+      document.getElementById("snaps-mod").src = data[0];
       document.getElementById('ivideo').src = '';
       document.getElementById('vidbut').style.display='block';
-      document.getElementById('ivideo').style.display='hidden';
+      document.getElementById('ivideo').style.display='none';
       a=data[1];
   }
 };
@@ -33,76 +32,106 @@ xhttp.send();
       document.getElementById("ivideo").src = data[1];
   }
 
-var modal = document.getElementById('myModal');
+  function param(){
+            document.getElementById('input_param').style.display='inline-block';
+            document.getElementById('but_param').style.display='inline-block';
+  }
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('snaps');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
+  function param_but(){
+            param = document.getElementById('parameters').value.toString();
+            pvalue = document.getElementById('input_param').value.toString();
+            document.getElementById('snaps').src=data[0]+'&'+param+'='+pvalue;
+            document.getElementById('input_param').style.display='none';
+            document.getElementById('but_param').style.display='none';
+  }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+$(function() {
+        $('.map').maphilight();
+        $('#squidheadlink').mouseover(function(e) {
+            $('#squidhead').mouseover();
+        }).mouseout(function(e) {
+            $('#squidhead').mouseout();
+        }).click(function(e) { e.preventDefault(); });
+    });
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+    function onloa(){
+        var x=1;
+        {% for i in camobjects %}
 
-$('#image-map area').hover(
-	function () {
-		var coords = $(this).attr('coords').split(',');
-		var width = $('.image-map-container').width();
-		var height = $('.image-map-container').height();
-		$('.image-map-container .map-selector').addClass('hover').css({
-			'left': coords[0]+'px',
-			'top': coords[1] + 'px',
-			'right': width - coords[2],
-			'bottom': height - coords[3]
-		})
-	 },
-	function () {
-		$('.image-map-container .map-selector').removeClass('hover').attr('style','');
-	}
-)
+            {% if i.cam_active %}
+                $('#cam'+x).data('maphilight', {"fillColor":"008000", "fillOpacity":0.6});
+                x++;
+            {% else %}
+                $('#cam'+x).data('maphilight', {"fillColor":"ff0000", "fillOpacity":0.6});
+                x++;
+            {% endif %}
+        {% endfor %}
+    }
 
+window.onload = onloa;
 </script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/jquery.maphilight.js'%}"></script>
+
 
 {% endblock head %}
 {% block body %}
 
-            <!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>
-
 <table style="width:100%;height:100%;">
+<tr>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+    <td>
+    <select id="parameters" name="parameters" onchange="param()" class="selectpicker" data-style="btn-info">
+        <option value="" selected disabled hidden>Select your parameter here</option>
+        <option value="resolution">Resolution</option>
+        <option value="camera">Camera</option>
+        <option value="compression">Compression</option>
+        <option value="colorlevel">Color-Level</option>
+        <option value="color">Color</option>
+        <option value="clock">Clock</option>
+        <option value="date">Date</option>
+        <option value="text">Text</option>
+        <option value="textstring">Text-String</option>
+        <option value="textcolor">Text-Color</option>
+        <option value="textbackgroundcolor">Text-Background-Color</option>
+        <option value="rotation">Rotation</option>
+        <option value="textpos">Text-position</option>
+        <option value="overlayimage">OverLay-Image</option>
+        <option value="squarepixel">Square-Pixel</option>
+    </select></td>
+    <td>
+    <input type="text" id="input_param" class="form-control" placeholder="Enter the value" style="display: none;width: 290px;">&nbsp;
+    <button id="but_param" onclick="param_but()" class="btn btn-info " style="display: none">Submit</button>
+    </td>
+        </div>
+</tr>
 <tr><td>
 <div align="left" style="position: relative;left: 0;top: 0" class="image-map-container">
     {% load static %}
-    <img src="{% static '/images/SenFORCE.png'%}" alt="SenForce Car" width="300px" height="600px" usemap="#image-map">
-    <div class="map-selector"></div></div>
+    <img src="http://sensennetworks.com/images/SenFORCE.png" alt="SenForce Car" width="300px" height="600px" usemap="#image-map" class="map">
     <map name="image-map" id="image-map">
 	<!--********************* Left Side  ****************************-->
-  <div class="tooltip">
-      <area shape="rect" coords="62,305,101,335" id="cam1" href="#" onclick="func(1)"/>
-  <span class="tooltiptext">Front Left Camera</span>
-  </div>
-  <area shape="rect" coords="62,360,99,381" href="#" onclick="func(2)" id="cam2"/>
-    <area shape="rect" coords="65,415,101,439" href="#" onclick="func(3)" id="cam3"/>
+    <area shape="rect" coords="64,304,97,336" href="#" alt="SenSen" alt="Link" id="cam1"
+          data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Front Camera" onclick="func(1)">
+<area shape="rect" coords="64,359,95,383" href="#" alt="SenSen" alt="Link" id="cam2"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Middle Camera" onclick="func(2)">
+        <area shape="rect" coords="62,412,100,440" href="#" alt="SenSen" alt="Link" id="cam3"
+              data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Rear Camera" onclick="func(3)">
+        <area shape="rect" coords="203,304,238,332" href="#" alt="SenSen" alt="Link" id="cam4"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Front Camera" onclick="func(4)">
+<area shape="rect" coords="203,358,239,381" href="#" alt="SenSen" alt="Link" id="cam5"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Middle Camera" onclick="func(5)">
+<area shape="rect" coords="194,410,242,438" href="#" alt="SenSen" alt="Link" id="cam6"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Rear Camera" onclick="func(6)">
 
-	<!--****************************** Right side ********************-->
-    <area shape="rect" coords="198,308,242,332" href="#" onclick="func(4)" id="cam4">
-    <area shape="rect" coords="203,359,239,382" href="#" onclick="func(5)" id="cam5">
-    <area shape="rect" coords="204,409,239,440" href="#" onclick="func(6)" id="cam6">
 </map>
-
+</div>
 </td>
 
 <td>
@@ -117,7 +146,7 @@ $('#image-map area').hover(
                 </div>
 
                 <div class="panel-body" align="center">
-			 <img id='snaps' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot" width="333px" height="240px"/> </div>
+			 <img id='snaps' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot" width="333px" height="240px" data-toggle="modal" data-target="#myModal"/> </div>
             </div>
           </div>
 
@@ -128,12 +157,26 @@ $('#image-map area').hover(
                 </div>
 
                 <div class="panel-body" align="center">
-                    <button onclick="video_but()" id="vidbut" hidden>Click to see live feed!</button>
-                    <iframe id="ivideo" width="100%" height="233" src="https://www.youtube.com/embed/Po_2NuFwaN4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+                    <button class="btn btn-info btn-lg" onclick="video_but()" id="vidbut" style="display: none;vertical-align: center;">Click to see live feed!</button>
+                    <iframe id="ivideo" width="100%" height="235px" src="https://www.youtube.com/embed/Po_2NuFwaN4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               </div>
             </div>
           </div>
 
-        </div></div></td></tr></table>
+        </div></div></td></tr>
+</table>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="padding: 15px; border-bottom: none;">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body"> <img id='snaps-mod' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot"/> </div>
+          </div>
+        </div>
+      </div>
+
+
 {% endblock body %}
