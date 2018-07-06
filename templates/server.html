@@ -5,50 +5,134 @@
 {% extends 'base.html' %}
 {% block title %}Server{% endblock title %}
 {% block server_active %}active{% endblock server_active %}
+
+{% block head %}
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.js"></script>
+ <!-- Bootstrap CSS-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.js"></script>
+<script>
+$(function () {
+    $('.min-chart#chart-sales').easyPieChart({
+        barColor: "#4caf50",
+        onStep: function (from, to, percent) {
+            $(this.el).find('.percent').text(Math.round(percent)+'%');
+        }
+    });
+    $('.memory-chart#chart-cpumem').easyPieChart({
+        barColor: "#33A8FF",
+        onStep: function (from, to, percent) {
+            $(this.el).find('.percent-mem').text(Math.round(percent)+'%');
+        }
+    });
+    $('.disk-chart#chart-disk').easyPieChart({
+        barColor: "#FF5233",
+        onStep: function (from, to, percent) {
+            $(this.el).find('.percent-disk').text(Math.round(percent)+'%');
+        }
+    });
+});
+
+$(document).ready(function () {
+    var colors =['red','blue','green','yellow','brown'];
+    var highlights = ['lightred','lightblue','pink','orange','violet'];
+
+    var ctx_cputime = $("#cputimes").get(0).getContext("2d");
+    var values_cputime = {{ cputime }};
+    var labels_cputime = ['User','System','Idle','Interrupt','Dpc'];
+    var data_cputime = [];
+    for(i=0;i<5;i++) {
+        data_cputime.push({value: Math.round(values_cputime[i]), color: colors[i], highlight: highlights[i], label: labels_cputime[i]});
+    }
+        var donut_cputime = new Chart(ctx_cputime).Doughnut(data_cputime);
+
+var ctx_cpustats = $("#cpustats").get(0).getContext("2d");
+    var values_cpustats = {{ cpustats }};
+    var labels_cpustats = ['Ctx_Switches','Interrupts','Soft_Interrupts','SysCalls'];
+    var data_cpustats = [];
+    for(i=0;i<4;i++) {
+        data_cpustats.push({value: Math.round(values_cpustats[i]), color: colors[i], highlight: highlights[i], label: labels_cpustats[i]});
+    }
+        var donut_cpustats = new Chart(ctx_cpustats).Doughnut(data_cpustats);
+
+
+   /*  var ctx_user = $("#cpuusers").get(0).getContext("2d");
+    var values_user =;
+    var labels_user = ['User','System','Idle','Interrupt','Dpc'];
+    var data_user = [];
+    for(i=0;i<5;i++) {
+        data_user.push({value: Math.round(values[i]), color: colors[i], highlight: highlights[i], label: labels[i]});
+    }
+        var donut_user = new Chart(ctx_user).Doughnut(data_user);
+*/
+
+
+
+
+})
+
+</script>
+
+{% endblock head %}
+
 {% block body %}
 
-    <h2 id="perc"><strong>CPU Percentage Used: {{ percent }}%</strong></h2>
+    <button class="btn btn-info" onClick="window.location.reload()" style="float: right;">Refresh</button>
 
+    </br></br>
+    <table width="100%">
+    <tr><td>
+    <div class="row-text-center" style="margin: 10px 0;">
+    <div class="col-md-4" align="center">
+        <div class="min-chart" id="chart-sales" data-percent="{{ percent }}">
+            <h4><div class="percent" style="vertical-align: middle;horiz-align: center;"></div></h4></div>
+<h4><span class="label green">Cpu Percentage Used <i class="fa fa-arrow-circle-up"></i></span></h4>
+    </div>
+        <div class="col-md-4" align="center">
+<div class="memory-chart" id="chart-cpumem" data-percent="{{ memory }}">
+    <h4><div class="percent-mem" style="vertical-align: middle;horiz-align: center;"></div></h4></div>
+<h4><span class="label blue">Cpu Memory Used <i class="fa fa-arrow-circle-up"></i></span></h4>
+        </div>
+        <div class="col-md-4" align="center">
+<div class="disk-chart" id="chart-disk" data-percent="{{ diskusage }}">
+    <h4><div class="percent-disk" style="vertical-align: middle;horiz-align: center;"></div></h4></div>
+<h4><span class="label red">Cpu Disk Usage <i class="fa fa-arrow-circle-up"></i></span></h4>
+        </div>
+    </div>
+    </td></tr>
+
+<tr><td>
+<div class="row-text-center" style="margin: 10px 0;">
+</br></br>
+    <div class="col-md-6" align="center">
+<canvas id="cputimes" width="256" height="256"></canvas>
     <h3><strong>CPU Times</strong></h3>
-{% for x in cputime %}
-    <p>{{ x }}</p>
-{% endfor %}
-
+    </div>
+<div class="col-md-6" align="center">
+<canvas id="cpustats" width="256" height="256"></canvas>
     <h3><strong>CPU Statistics</strong></h3>
-{% for x in cpustats %}
-    <p>{{ x }}</p>
-{% endfor %}
-
-    <h3><strong>CPU Memory</strong></h3>
-{% for x in memory %}
-    <p>{{ x }}</p>
-{% endfor %}
-
-    <h3><strong>CPU Disk Usage</strong></h3>
-{% for x in diskusage %}
-    <p>{{ x }}</p>
-{% endfor %}
-
-    <h3><strong>CPU Times</strong></h3>
-{% for x in cputime %}
-    <p>{{ x }}</p>
-{% endfor %}
-
+</div></div>
+</td></tr>
+<!--
+    <canvas id="cpuusers" width="256" height="256"></canvas>
     <h3><strong>CPU Users</strong></h3>
-{% for x in user %}
-    <p>{{ x }}</p>
-{% endfor %}
 
-    <h3><strong>CPU Running Processes</strong></h3>
-{% for x in runprocess %}
-    <p>{{ x }}</p>
-{% endfor %}
-
-    <script>
-      $(document).ready(function () {
-      })
-
-    </script>
+    <h3><strong>CPU Running Processes</strong></h3>-->
 
 
+<tr><td>
+    <div class="panel panel-primary" id="result_panel">
+    <div class="panel-heading"><h3 class="panel-title">Running Processes</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group" style="max-height: 300px;margin-bottom: 10px;overflow:scroll;-webkit-overflow-scrolling: touch;">
+            {% for i in runprocess %}
+            <li class="list-group-item"><strong>{{ i }}</strong></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+    </td></tr></table>
 {% endblock body %}

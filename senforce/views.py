@@ -2,14 +2,16 @@
 ######## Risabh Mishra ##########
 
 from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse
-import psutil
+from django.http import HttpResponse
+import psutil,datetime
+import time
 import urllib,os
 from .models import Camera,Gps,User
 from django.shortcuts import render
 from django.template import loader
 from SenForceWeb import settings
 from django.core.mail import send_mail
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 def index(request):
@@ -24,25 +26,24 @@ def camera(request):
 def server(request):
     ###### CPU #################
     percent = psutil.cpu_percent()
-
+    dt = str(datetime.datetime.now())
     times = str(psutil.cpu_times())
     time = times[10:-1]
-    cputime = [i.rstrip().lstrip().rsplit('=') for i in time.split(',')]
-    #cputime = [x[1] for x in cputimes]
-    '''for x in s:
-        print(x[1])
-    '''
+    cputimes = [i.rstrip().lstrip().rsplit('=') for i in time.split(',')]
+    cputime = [float(x[1]) for x in cputimes]
+    cptsum =[(i/sum(cputime))*360 for i in cputime]
     serv_stats = str(psutil.cpu_stats())
     stats = serv_stats[10:-1]
     cpustats = [i.rstrip().lstrip().rsplit('=') for i in stats.split(',')]
-
+    cpustat = [int(x[1]) for x in cpustats]
+    statsum = [(i/sum(cpustat))*360 for i in cpustat]
     ####################  MEMORY  ###########
     svmem = str(psutil.virtual_memory())[7:-1]
-    memory = [i.rstrip().lstrip().rsplit('=') for i in svmem.split(',')]
+    memory = [i.rstrip().lstrip().rsplit('=') for i in svmem.split(',')][2][1]
 
     ################  DISKS  ############
     dusage = str(psutil.disk_usage('/'))[11:-1]
-    diskusage = [i.rstrip().lstrip().rsplit('=') for i in dusage.split(',')]
+    diskusage = [i.rstrip().lstrip().rsplit('=') for i in dusage.split(',')][3][1]
 
     ######### USERS #########
 
@@ -53,7 +54,8 @@ def server(request):
 
     runprocess = [p.name() for p in psutil.process_iter()]
 
-    return render(request,'server.html',{'percent':percent,'cputime':cputime,'cpustats':cpustats,'memory':memory,'diskusage':diskusage,'user':user,'runprocess':runprocess})
+    return render(request,'server.html',{'datetime':dt,'percent':percent,'cputime':cptsum,
+                                         'cpustats':statsum,'memory':memory,'diskusage':diskusage,'user':user,'runprocess':runprocess})
 
 def buttonlink(request,button_num):
 
@@ -88,7 +90,6 @@ def radar(request):
     return render(request,'radar.html')
 
 def ping():
-    import os
     for i in Camera.objects.all():
         hostname = str(i.cam_ip)  # example
         response = os.system("ping -n 1 " + hostname)
@@ -112,3 +113,7 @@ def mail():
         msg = "Mail Sent Successfuly"
     else:
         msg = "Mail could not sent"
+
+class UserCreate(CreateView):
+    model = User
+    fields = ['user_fname','user_lname','user_email','user_organization']

@@ -45,7 +45,6 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    {% load static %}
         <!--jquery-1.12.4.min.js-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -174,7 +173,7 @@
 					<ul class="nav">
 
 						<li class="{% block home_active %}{% endblock home_active %}">
-							<a href="{% url 'senforce_app:index' %}" >
+							<a href="{% url 'senforce_app:server' %}" >
 								<i data-feather="home"></i> <span>Home</span>
 							</a>
 						</li>
