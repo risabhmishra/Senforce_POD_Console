@@ -4,7 +4,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import psutil,datetime
-import time
 import urllib,os
 from .models import Camera,Gps,User
 from django.shortcuts import render

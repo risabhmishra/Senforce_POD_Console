@@ -17,6 +17,5 @@ urlpatterns = [
     url(r'^gps/$', views.gps, name='gps'),
     url(r'^radar/$', views.radar, name='radar'),
     url(r'^useradd$',views.UserCreate.as_view(),name='add-user'),
-
 ]
 

@@ -36,6 +36,8 @@ $(function () {
 });
 
 $(document).ready(function () {
+        document.getElementById('clock').innerHTML = new Date().toLocaleTimeString();
+
     var colors =['red','blue','green','yellow','brown'];
     var highlights = ['lightred','lightblue','pink','orange','violet'];
 
@@ -78,10 +80,8 @@ var ctx_cpustats = $("#cpustats").get(0).getContext("2d");
 {% endblock head %}
 
 {% block body %}
-
     <button class="btn btn-info" onClick="window.location.reload()" style="float: right;">Refresh</button>
-
-    </br></br>
+        <h4 id="clock" style="float: right;padding-top: 10px;" ></h4>
     <table width="100%">
     <tr><td>
     <div class="row-text-center" style="margin: 10px 0;">

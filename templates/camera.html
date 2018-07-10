@@ -15,7 +15,7 @@
   if (this.readyState == 4 && this.status == 200) {
           data = this.responseText.split('%');
       document.getElementById("snaps").src = data[0];
-      document.getElementById("snaps-mod").src = data[0];
+      document.getElementById("img01").src = data[0];
       document.getElementById('ivideo').src = '';
       document.getElementById('vidbut').style.display='block';
       document.getElementById('ivideo').style.display='none';
@@ -47,28 +47,29 @@ xhttp.send();
 
 $(function() {
         $('.map').maphilight();
-        $('#squidheadlink').mouseover(function(e) {
+        /*$('#squidheadlink').mouseover(function(e) {
             $('#squidhead').mouseover();
         }).mouseout(function(e) {
             $('#squidhead').mouseout();
-        }).click(function(e) { e.preventDefault(); });
+        }).click(function(e) { e.preventDefault(); }); */
     });
 
-    function onloa(){
-        var x=1;
+$(document).ready(function () {
+    document.getElementById('clock').innerHTML = new Date().toLocaleTimeString();
+
+    var x=1;
         {% for i in camobjects %}
 
             {% if i.cam_active %}
-                $('#cam'+x).data('maphilight', {"fillColor":"008000", "fillOpacity":0.6});
+                $('#cam'+x).data('maphilight', {"fillColor":"008000", "fillOpacity":0.6,"alwaysOn":true}).trigger('alwaysOn.maphilight');;
                 x++;
             {% else %}
-                $('#cam'+x).data('maphilight', {"fillColor":"ff0000", "fillOpacity":0.6});
+                $('#cam'+x).data('maphilight', {"fillColor":"ff0000", "fillOpacity":0.6,"alwaysOn":true}).trigger('alwaysOn.maphilight');;
                 x++;
             {% endif %}
         {% endfor %}
-    }
+    });
 
-window.onload = onloa;
 </script>
 
     <!-- Latest compiled and minified CSS -->
@@ -79,14 +80,82 @@ window.onload = onloa;
     {% load static %}
     <script type="text/javascript" src="{% static 'js/jquery.maphilight.js'%}"></script>
 
+    <style>
+    #snaps {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#snaps:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+    </style>
 
 {% endblock head %}
 {% block body %}
-
 <table style="width:100%;height:100%;">
 <tr>
     <div class="col-lg-4 col-md-4 col-sm-4">
-    <td>
+    <td colspan="1" style="width: 300px;"> <div>
+        <button class="btn btn-info" onClick="window.location.reload()" style="float: right;margin-top: 18px;">Refresh</button>
+        <h4 id="clock"></h4></div>
     <select id="parameters" name="parameters" onchange="param()" class="selectpicker" data-style="btn-info">
         <option value="" selected disabled hidden>Select your parameter here</option>
         <option value="resolution">Resolution</option>
@@ -106,8 +175,8 @@ window.onload = onloa;
         <option value="squarepixel">Square-Pixel</option>
     </select></td>
     <td>
-    <input type="text" id="input_param" class="form-control" placeholder="Enter the value" style="display: none;width: 290px;">&nbsp;
-    <button id="but_param" onclick="param_but()" class="btn btn-info " style="display: none">Submit</button>
+    <input type="text" id="input_param" class="form-control" placeholder="Enter the value" style="display: none;width: 290px;margin-top: 18px;">&nbsp;
+    <button id="but_param" onclick="param_but()" class="btn btn-info " style="display: none;margin-top: -5px;">Submit</button>
     </td>
         </div>
 </tr>
@@ -118,17 +187,17 @@ window.onload = onloa;
     <map name="image-map" id="image-map">
 	<!--********************* Left Side  ****************************-->
     <area shape="rect" coords="64,304,97,336" href="#" alt="SenSen" alt="Link" id="cam1"
-          data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Front Camera" onclick="func(1)">
+          data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}' title="Left-Front Camera" onclick="func(1)">
 <area shape="rect" coords="64,359,95,383" href="#" alt="SenSen" alt="Link" id="cam2"
-      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Middle Camera" onclick="func(2)">
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}' title="Left-Middle Camera" onclick="func(2)">
         <area shape="rect" coords="62,412,100,440" href="#" alt="SenSen" alt="Link" id="cam3"
-              data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Left-Rear Camera" onclick="func(3)">
-        <area shape="rect" coords="203,304,238,332" href="#" alt="SenSen" alt="Link" id="cam4"
-      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Front Camera" onclick="func(4)">
+              data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}' title="Left-Rear Camera" onclick="func(3)">
+        <area shape="rect" coords="203,304,238,332" href="#" alt="SenSen" alt="Link" id="cam6"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}'  title="Right-Front Camera" onclick="func(6)">
 <area shape="rect" coords="203,358,239,381" href="#" alt="SenSen" alt="Link" id="cam5"
-      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Middle Camera" onclick="func(5)">
-<area shape="rect" coords="194,410,242,438" href="#" alt="SenSen" alt="Link" id="cam6"
-      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6}' title="Right-Rear Camera" onclick="func(6)">
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}' title="Right-Middle Camera" onclick="func(5)">
+<area shape="rect" coords="194,410,242,438" href="#" alt="SenSen" alt="Link" id="cam4"
+      data-maphilight='{"fillColor":"ff0000","fillOpacity":0.6,"alwaysOn":true}' title="Right-Rear Camera" onclick="func(4)">
 
 </map>
 </div>
@@ -146,7 +215,7 @@ window.onload = onloa;
                 </div>
 
                 <div class="panel-body" align="center">
-			 <img id='snaps' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot" width="333px" height="240px" data-toggle="modal" data-target="#myModal"/> </div>
+			 <img id='snaps' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot" width="333px" height="240px"/> </div>
             </div>
           </div>
 
@@ -165,18 +234,35 @@ window.onload = onloa;
 
         </div></div></td></tr>
 </table>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header" style="padding: 15px; border-bottom: none;">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body"> <img id='snaps-mod' src="http://www.sensennetworks.com/images/news_logan.jpg"  alt="Snapshot"/> </div>
-          </div>
-        </div>
-      </div>
+   <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" style="padding-top: 75px;">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  </div>
+
+<script>
+/////////Modal Class/////////
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('snaps');
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+}
 
 
+// When the user clicks on <span> (x), close the modal
+var span = document.getElementsByClassName("close")[0];
+   span.onclick = function() {
+    modal.style.display = "none"; }
+
+</script>
 {% endblock body %}
