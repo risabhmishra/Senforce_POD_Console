@@ -4,15 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/templates/camera.html" line="155" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1ed264d-8fc6-4aa4-bcf7-e307f3fbb934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/usage.statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/usage.statistics.xml" afterDir="false" />
+    <list default="true" id="c1ed264d-8fc6-4aa4-bcf7-e307f3fbb934" name="Default Changelist" comment="Server and Camera Page Done.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/senforce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/senforce/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/senforce/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/senforce/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/camera.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/camera.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/server.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/server.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,18 +23,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/senforce/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="24" />
+            <state relative-caret-position="85">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding>
-                <element signature="e#36#71#0" expanded="true" />
                 <marker date="1531208572661" expanded="true" signature="423:688" ph="..." />
-                <marker date="1531208572661" expanded="true" signature="615:688" ph="..." />
-                <marker date="1531208572661" expanded="true" signature="3216:3217" ph="..." />
-                <marker date="1531208572661" expanded="true" signature="3650:3651" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/user_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/senforce/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -49,16 +56,8 @@
       <file leaf-file-name="camera.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/camera.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-183">
-              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-              <folding>
-                <element signature="e#4475#4497#0#HTML" expanded="true" />
-                <element signature="e#4576#4612#0#HTML" expanded="true" />
-                <element signature="e#5781#5833#0#HTML" expanded="true" />
-                <element signature="e#5912#5951#0#HTML" expanded="true" />
-                <element signature="e#9102#9129#0#HTML" expanded="true" />
-                <element signature="e#9087#9094#1#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="1207">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
@@ -66,7 +65,7 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-850">
+            <state relative-caret-position="1972">
               <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
             </state>
           </provider>
@@ -75,7 +74,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/senforce/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
+            <state relative-caret-position="306">
               <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#37#69#0" expanded="true" />
@@ -87,11 +86,8 @@
       <file leaf-file-name="server.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/server.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
+            <state relative-caret-position="1768">
               <caret line="104" selection-start-line="104" selection-end-line="104" />
-              <folding>
-                <element signature="e#3034#3073#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -110,14 +106,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
+      <find>With great</find>
       <find>squidhead</find>
       <find>conta</find>
       <find>myModal</find>
       <find>ping</find>
     </findStrings>
     <dirStrings>
-      <dir />
+      <dir>C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -155,6 +151,11 @@
       </list>
     </option>
   </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="SenForceWeb/invalid/Django" />
+    </ignored-facets>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -164,7 +165,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -186,23 +187,13 @@
             <path>
               <item name="SenForceWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="SenForceWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="senforce" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SenForceWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="SenForceWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="senforce" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SenForceWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SenForceWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="SenForceWeb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SenForceWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SenForceWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -214,21 +205,22 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\templates\assets\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\senforce\static\js" />
       <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\senforce\static\images" />
       <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\SenForceWeb\static\images" />
       <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\templates\assets\images" />
       <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\senforce\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Risabh Mishra\PycharmProjects\SenForceWeb\templates\assets\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -302,7 +294,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python">
       <module name="SenForceWeb" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -366,8 +358,8 @@
     <list>
       <item itemvalue="Django server.SenForceWeb" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.manage" />
       <item itemvalue="JavaScript Debug.camera.html" />
+      <item itemvalue="Python.manage" />
       <item itemvalue="Python.views" />
       <item itemvalue="Python.test (1)" />
     </list>
@@ -375,8 +367,6 @@
       <list>
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.views" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="JavaScript Debug.camera.html" />
         <item itemvalue="Python.manage" />
       </list>
     </recent_temporary>
@@ -420,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530862863469</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Server and Camera Page Done.">
+      <created>1531212201850</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531212201850</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -433,17 +430,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1346" height="688" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073206" side_tool="true" weight="0.32755905" />
-      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="5" side_tool="true" weight="0.329429" />
+      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="5" side_tool="true" visible="true" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.35924006" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.35924006" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24812031" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24743778" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -451,35 +449,35 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24508321" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289689" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24508321" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289689" />
-      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3289689" />
     </layout-to-restore>
   </component>
@@ -494,18 +492,73 @@
     <MESSAGE value="Minor UI Updates" />
     <MESSAGE value="Minor Updates" />
     <MESSAGE value="Server Page Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server Page Updated" />
+    <MESSAGE value="Server and Camera Page Done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Server and Camera Page Done." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/twisted/internet/_win32stdio.py">
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="1972">
+          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SenForceWeb/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/senforce/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#37#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/server.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senforce/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1531208572661" expanded="true" signature="423:688" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/camera.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senforce/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#37#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/server.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/senforce/consumers.py" />
     <entry file="file://$PROJECT_DIR$/senforce/routing.py" />
@@ -546,17 +599,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/senforce/tests.py" />
-    <entry file="file://$PROJECT_DIR$/senforce/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/core/handlers/exception.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -582,11 +625,7 @@
     <entry file="file://$PROJECT_DIR$/SenForceWeb/static/readme.txt" />
     <entry file="file://$PROJECT_DIR$/SenForceWeb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <folding>
-            <element signature="e#671#703#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/senforce/apps.py">
@@ -603,21 +642,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/static/images/SenFORCE.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/static/js/jquery.maphilight.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/example (1).html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/static/js/jquery.maphilight.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/Downloads/225114_2F4640774_2FHeSjHazKBj4PTdW%2Fall-in-one/all-in-one.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -654,11 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-          <folding>
-            <marker date="1530615455663" expanded="true" signature="120:125" ph="..." />
-            <marker date="1530615455663" expanded="true" signature="454:459" ph="..." />
-            <marker date="1530615455663" expanded="true" signature="606:611" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,13 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -704,12 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/static/js/Chart.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/senforce/static/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/225114_2F4640774_2FaCQsMdiuk4M4lMw%2Fchart/final.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
@@ -734,39 +746,28 @@
     <entry file="file://$PROJECT_DIR$/senforce/static/js/server.js" />
     <entry file="file://$PROJECT_DIR$/templates/server.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
+        <state relative-caret-position="1768">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#3034#3073#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/camera.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-183">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="e#4475#4497#0#HTML" expanded="true" />
-            <element signature="e#4576#4612#0#HTML" expanded="true" />
-            <element signature="e#5781#5833#0#HTML" expanded="true" />
-            <element signature="e#5912#5951#0#HTML" expanded="true" />
-            <element signature="e#9102#9129#0#HTML" expanded="true" />
-            <element signature="e#9087#9094#1#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="1207">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
+        <state relative-caret-position="1972">
           <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/senforce/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
+        <state relative-caret-position="306">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#37#69#0" expanded="true" />
@@ -776,15 +777,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/senforce/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="24" />
+        <state relative-caret-position="85">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding>
-            <element signature="e#36#71#0" expanded="true" />
             <marker date="1531208572661" expanded="true" signature="423:688" ph="..." />
-            <marker date="1531208572661" expanded="true" signature="615:688" ph="..." />
-            <marker date="1531208572661" expanded="true" signature="3216:3217" ph="..." />
-            <marker date="1531208572661" expanded="true" signature="3650:3651" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senforce/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
         </state>
       </provider>
     </entry>
